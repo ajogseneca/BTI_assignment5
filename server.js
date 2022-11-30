@@ -76,7 +76,7 @@ app.get('/about', (req, res) => {
   res.render('about', { layout: 'main' });
 });
 
-/********************** . Employees ************************** */
+/*Updated  Employees Routes  */
 app.get('/employees/add', (req, res) => {
   data_services
     .getDepartments()
@@ -171,7 +171,7 @@ app.get('/employees/delete/:empNum', (req, res) => {
       res.status(500).send('Unable to Remove Employee / Employee not found')
     );
 });
-/*************************** Department ************************ */
+/*Updated  Department Routes*/
 app.get('/departments', (req, res) => {
   data_services
     .getDepartments()
@@ -202,7 +202,7 @@ app.get('/department/:departmentId', (req, res) => {
       res.status(404).send('Department Not Found');
     });
 });
-/*UpdatedImage Routes */
+/* Updated Image Routes */
 app.get('/images/add', (req, res) => {
   res.render('addImage');
 });
@@ -214,7 +214,7 @@ app.get("/images", (req, res) => {
 
 })
 
-/************************** app post *****************************  */
+/* App posting methods  */
 app.post('/images/add', upload.single('imageFile'), (req, res) => {
   res.render('addImage', { layout: 'main' });
 });
