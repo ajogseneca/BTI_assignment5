@@ -55,10 +55,8 @@ app.engine('.hbs',exphbs.engine({
 }));
 app.set('view engine','.hbs');
 
-var HTTP_PORT = process.env.PORT || 8080; 
-function onHttpStart(){
-    console.log("Express http server listening on: " + HTTP_PORT);
-}
+const HTTP_PORT = process.env.PORT || 8080; 
+
 
 
 app.set('view engine','.hbs');
@@ -251,9 +249,11 @@ app.get('*', (req, res) => {
   res.status(404).send('Page Not Found');
 });
 
-data_services.initialize().then(function(data){
-  app.listen(HTTP_PORT, onHttpStart);
-
-}).catch(function(err){
-  console.log(err);
-})
+data_services
+  .initialize()
+  .then(() => {
+    app.listen(HTTP_PORT, () =>
+      console.log(`Express http server listening on ${HTTP_PORT}`)
+    );
+  })
+  .catch((e) => console.log(e));
